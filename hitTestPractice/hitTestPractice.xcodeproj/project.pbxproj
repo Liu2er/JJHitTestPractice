@@ -15,6 +15,13 @@
 		58F14CD21E66C9FD0084265E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58F14CD01E66C9FD0084265E /* LaunchScreen.storyboard */; };
 		58F14CDD1E66C9FD0084265E /* hitTestPracticeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F14CDC1E66C9FD0084265E /* hitTestPracticeTests.m */; };
 		58F14CE81E66C9FD0084265E /* hitTestPracticeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F14CE71E66C9FD0084265E /* hitTestPracticeUITests.m */; };
+		58F14D011E66CA7A0084265E /* View1-1.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F14CF61E66CA7A0084265E /* View1-1.m */; };
+		58F14D021E66CA7A0084265E /* View1-2.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F14CF81E66CA7A0084265E /* View1-2.m */; };
+		58F14D031E66CA7A0084265E /* View1.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F14CFA1E66CA7A0084265E /* View1.m */; };
+		58F14D041E66CA7A0084265E /* View2-1-1.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F14CFC1E66CA7A0084265E /* View2-1-1.m */; };
+		58F14D051E66CA7A0084265E /* View2-1.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F14CFE1E66CA7A0084265E /* View2-1.m */; };
+		58F14D061E66CA7A0084265E /* View2.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F14D001E66CA7A0084265E /* View2.m */; };
+		58F14D0A1E66CAD60084265E /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F14D091E66CAD60084265E /* UIView+Layout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +58,20 @@
 		58F14CE31E66C9FD0084265E /* hitTestPracticeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hitTestPracticeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F14CE71E66C9FD0084265E /* hitTestPracticeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hitTestPracticeUITests.m; sourceTree = "<group>"; };
 		58F14CE91E66C9FD0084265E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58F14CF51E66CA7A0084265E /* View1-1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View1-1.h"; sourceTree = "<group>"; };
+		58F14CF61E66CA7A0084265E /* View1-1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View1-1.m"; sourceTree = "<group>"; };
+		58F14CF71E66CA7A0084265E /* View1-2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View1-2.h"; sourceTree = "<group>"; };
+		58F14CF81E66CA7A0084265E /* View1-2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View1-2.m"; sourceTree = "<group>"; };
+		58F14CF91E66CA7A0084265E /* View1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View1.h; sourceTree = "<group>"; };
+		58F14CFA1E66CA7A0084265E /* View1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View1.m; sourceTree = "<group>"; };
+		58F14CFB1E66CA7A0084265E /* View2-1-1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View2-1-1.h"; sourceTree = "<group>"; };
+		58F14CFC1E66CA7A0084265E /* View2-1-1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View2-1-1.m"; sourceTree = "<group>"; };
+		58F14CFD1E66CA7A0084265E /* View2-1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View2-1.h"; sourceTree = "<group>"; };
+		58F14CFE1E66CA7A0084265E /* View2-1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View2-1.m"; sourceTree = "<group>"; };
+		58F14CFF1E66CA7A0084265E /* View2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View2.h; sourceTree = "<group>"; };
+		58F14D001E66CA7A0084265E /* View2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = View2.m; sourceTree = "<group>"; };
+		58F14D081E66CAD60084265E /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		58F14D091E66CAD60084265E /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +126,19 @@
 				58F14CC61E66C9FD0084265E /* AppDelegate.m */,
 				58F14CC81E66C9FD0084265E /* ViewController.h */,
 				58F14CC91E66C9FD0084265E /* ViewController.m */,
+				58F14CF91E66CA7A0084265E /* View1.h */,
+				58F14CFA1E66CA7A0084265E /* View1.m */,
+				58F14CF51E66CA7A0084265E /* View1-1.h */,
+				58F14CF61E66CA7A0084265E /* View1-1.m */,
+				58F14CF71E66CA7A0084265E /* View1-2.h */,
+				58F14CF81E66CA7A0084265E /* View1-2.m */,
+				58F14CFF1E66CA7A0084265E /* View2.h */,
+				58F14D001E66CA7A0084265E /* View2.m */,
+				58F14CFD1E66CA7A0084265E /* View2-1.h */,
+				58F14CFE1E66CA7A0084265E /* View2-1.m */,
+				58F14CFB1E66CA7A0084265E /* View2-1-1.h */,
+				58F14CFC1E66CA7A0084265E /* View2-1-1.m */,
+				58F14D071E66CAD60084265E /* JJCategory */,
 				58F14CC21E66C9FD0084265E /* Supporting Files */,
 			);
 			path = hitTestPractice;
@@ -138,6 +172,15 @@
 				58F14CE91E66C9FD0084265E /* Info.plist */,
 			);
 			path = hitTestPracticeUITests;
+			sourceTree = "<group>";
+		};
+		58F14D071E66CAD60084265E /* JJCategory */ = {
+			isa = PBXGroup;
+			children = (
+				58F14D081E66CAD60084265E /* UIView+Layout.h */,
+				58F14D091E66CAD60084265E /* UIView+Layout.m */,
+			);
+			path = JJCategory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,9 +319,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F14D041E66CA7A0084265E /* View2-1-1.m in Sources */,
+				58F14D031E66CA7A0084265E /* View1.m in Sources */,
+				58F14D021E66CA7A0084265E /* View1-2.m in Sources */,
+				58F14D061E66CA7A0084265E /* View2.m in Sources */,
 				58F14CCA1E66C9FD0084265E /* ViewController.m in Sources */,
 				58F14CC71E66C9FD0084265E /* AppDelegate.m in Sources */,
+				58F14D011E66CA7A0084265E /* View1-1.m in Sources */,
 				58F14CC41E66C9FD0084265E /* main.m in Sources */,
+				58F14D0A1E66CAD60084265E /* UIView+Layout.m in Sources */,
+				58F14D051E66CA7A0084265E /* View2-1.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
