@@ -343,6 +343,7 @@
     BOOL includeInternalWindows = YES;
     BOOL onlyVisibleWindows = NO;
 
+    // 为了绕着弯执行苹果的私有方法：allWindowsIncludingInternalWindows:onlyVisibleWindows:
     NSArray *allWindowsComponents = @[@"al", @"lWindo", @"wsIncl", @"udingInt", @"ernalWin", @"dows:o", @"nlyVisi", @"bleWin", @"dows:"];
     SEL allWindowsSelector = NSSelectorFromString([allWindowsComponents componentsJoinedByString:@""]);
 

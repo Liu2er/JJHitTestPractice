@@ -19,6 +19,13 @@
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
+
+@interface UIWindow (allWindows)
+
++ (NSArray *)allWindowsIncludingInternalWindows:(BOOL)includeInternalWindows onlyVisibleWindows:(BOOL)onlyVisibleWindows;
+
+@end
+
 @interface ViewController ()
 
 @end
@@ -54,6 +61,34 @@
     [view2_1 addSubview:view2_1_1];
     
    [[FLEXManager sharedManager] showExplorer];
+    
+    UITapGestureRecognizer *selectionTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSelectionTap:)];
+    [self.view addGestureRecognizer:selectionTapGR];
+}
+
+// 监听屏幕点击事件
+- (void)handleSelectionTap:(UITapGestureRecognizer *)tapGR {
+    if (tapGR.state != UIGestureRecognizerStateRecognized) return;
+    
+    NSArray *allWindows = [UIWindow allWindowsIncludingInternalWindows:YES onlyVisibleWindows:NO];
+    NSMutableArray *allWindowsAndSubViews = [NSMutableArray array];;
+    
+    for (UIWindow *window in allWindows) {
+        [allWindowsAndSubViews addObject:window];
+        [allWindowsAndSubViews addObjectsFromArray:[self recursiveSubviewsInView:window]];
+        NSLog(@"%@.subviews = %@", NSStringFromClass([window class]), [self recursiveSubviewsInView:window]);
+    }
+}
+
+// 获得某 window 下所有的 subviews
+- (NSArray *)recursiveSubviewsInView:(UIView *)view {
+    NSMutableArray *subviewsInView = [NSMutableArray array];
+    for (UIView *subview in view.subviews) {
+        if (subview.hidden || subview.alpha < 0.01) continue;
+        [subviewsInView addObject:subview];
+        [subviewsInView addObjectsFromArray:[self recursiveSubviewsInView:subview]];
+    }
+    return subviewsInView;
 }
 
 @end

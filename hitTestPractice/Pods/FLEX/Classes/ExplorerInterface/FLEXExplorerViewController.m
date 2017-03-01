@@ -562,11 +562,13 @@ typedef NS_ENUM(NSUInteger, FLEXExplorerMode) {
     self.outlineViewsForVisibleViews = nil;
 }
 
+// 获取包含点击点所在的所有window和view的数组
 - (NSArray *)viewsAtPoint:(CGPoint)tapPointInWindow skipHiddenViews:(BOOL)skipHidden
 {
     NSMutableArray *views = [NSMutableArray array];
     for (UIWindow *window in [FLEXUtility allWindows]) {
         // Don't include the explorer's own window or subviews.
+        // 通过NSLog得到：self = FLEXExplorerViewController、self.view = UIView(0 0; 375 667)、self.view.window = FLEXWindow(0 0; 375 667)
         if (window != self.view.window && [window pointInside:tapPointInWindow withEvent:nil]) {
             [views addObject:window];
             [views addObjectsFromArray:[self recursiveSubviewsAtPoint:tapPointInWindow inView:window skipHiddenViews:skipHidden]];
