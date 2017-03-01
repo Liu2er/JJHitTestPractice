@@ -14,6 +14,7 @@
 #import "View2.h"
 #import "View2-1.h"
 #import "View2-1-1.h"
+#import "FLEXManager.h"
 
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
@@ -51,6 +52,8 @@
     View2_1_1 *view2_1_1 = [[View2_1_1 alloc] initWithFrame:CGRectMake(view2_1.centerX + 30, view2_1.centerY + 30, view1_2.width, view1_2.height)];
     view2_1_1.backgroundColor = [UIColor redColor];
     [view2_1 addSubview:view2_1_1];
+    
+   [[FLEXManager sharedManager] showExplorer];
 }
 
 @end
