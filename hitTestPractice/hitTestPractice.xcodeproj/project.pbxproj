@@ -105,10 +105,6 @@
 				58F14CC61E66C9FD0084265E /* AppDelegate.m */,
 				58F14CC81E66C9FD0084265E /* ViewController.h */,
 				58F14CC91E66C9FD0084265E /* ViewController.m */,
-				58F14CCB1E66C9FD0084265E /* Main.storyboard */,
-				58F14CCE1E66C9FD0084265E /* Assets.xcassets */,
-				58F14CD01E66C9FD0084265E /* LaunchScreen.storyboard */,
-				58F14CD31E66C9FD0084265E /* Info.plist */,
 				58F14CC21E66C9FD0084265E /* Supporting Files */,
 			);
 			path = hitTestPractice;
@@ -117,6 +113,10 @@
 		58F14CC21E66C9FD0084265E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				58F14CCB1E66C9FD0084265E /* Main.storyboard */,
+				58F14CCE1E66C9FD0084265E /* Assets.xcassets */,
+				58F14CD01E66C9FD0084265E /* LaunchScreen.storyboard */,
+				58F14CD31E66C9FD0084265E /* Info.plist */,
 				58F14CC31E66C9FD0084265E /* main.m */,
 			);
 			name = "Supporting Files";
