@@ -70,13 +70,12 @@
 - (void)handleSelectionTap:(UITapGestureRecognizer *)tapGR {
     if (tapGR.state != UIGestureRecognizerStateRecognized) return;
     
-    NSArray *allWindows = [UIWindow allWindowsIncludingInternalWindows:YES onlyVisibleWindows:NO];
+    // 遍历得到包含所有 window 和 subviews 的数组
     NSMutableArray *allWindowsAndSubViews = [NSMutableArray array];
-    
+    NSArray *allWindows = [UIWindow allWindowsIncludingInternalWindows:YES onlyVisibleWindows:NO];
     for (UIWindow *window in allWindows) {
         [allWindowsAndSubViews addObject:window];
         [allWindowsAndSubViews addObjectsFromArray:[self recursiveSubviewsInView:window]];
-//        NSLog(@"%@.subviews = %@", NSStringFromClass([window class]), [self recursiveSubviewsInView:window]);
     }
     
     // 遍历 UIWindow 下的所有包含点击点的 view
@@ -84,19 +83,6 @@
     CGPoint tapPointInWindow = [self.view convertPoint:tapPointInView toView:nil];
     NSArray *subviewsContainPoint = [self recursiveSubviewsAtPoint:tapPointInWindow inView:[[UIApplication sharedApplication] keyWindow]];
     NSLog(@"subviewsContainPoint = %@", subviewsContainPoint);
-}
-
-// 获取包含点击点所在的所有 window 和 view 的数组
-- (NSArray *)viewsAtPoint:(CGPoint)tapPointInWindow {
-    NSMutableArray *views = [NSMutableArray array];
-    NSArray *allWindows = [UIWindow allWindowsIncludingInternalWindows:YES onlyVisibleWindows:NO];
-    for (UIWindow *window in allWindows) {
-        if ([window isMemberOfClass:[NSClassFromString(@"FLEXWindow") class]] && [window pointInside:tapPointInWindow withEvent:nil]) {
-            [views addObject:window];
-            [views addObjectsFromArray:[self recursiveSubviewsAtPoint:tapPointInWindow inView:window]];
-        }
-    }
-    return views;
 }
 
 // 递归遍历某 window 下所有的 subviews
