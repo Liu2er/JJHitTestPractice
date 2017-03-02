@@ -22,14 +22,14 @@
     return self;
 }
 
-- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
-    NSLog(@"View2-1-1 = hitTest:withEvent:");
-    return [super hitTest:point withEvent:event];
-}
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesBegan:touches withEvent:event];
-    NSLog(@"View2-1-1 = touchesBegan:withEvent:");
-}
+//- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+//    NSLog(@"View2-1-1 = hitTest:withEvent:");
+//    return [super hitTest:point withEvent:event];
+//}
+//
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+//    [super touchesBegan:touches withEvent:event];
+//    NSLog(@"View2-1-1 = touchesBegan:withEvent:");
+//}
 
 @end

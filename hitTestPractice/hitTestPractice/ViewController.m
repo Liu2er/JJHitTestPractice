@@ -71,16 +71,35 @@
     if (tapGR.state != UIGestureRecognizerStateRecognized) return;
     
     NSArray *allWindows = [UIWindow allWindowsIncludingInternalWindows:YES onlyVisibleWindows:NO];
-    NSMutableArray *allWindowsAndSubViews = [NSMutableArray array];;
+    NSMutableArray *allWindowsAndSubViews = [NSMutableArray array];
     
     for (UIWindow *window in allWindows) {
         [allWindowsAndSubViews addObject:window];
         [allWindowsAndSubViews addObjectsFromArray:[self recursiveSubviewsInView:window]];
-        NSLog(@"%@.subviews = %@", NSStringFromClass([window class]), [self recursiveSubviewsInView:window]);
+//        NSLog(@"%@.subviews = %@", NSStringFromClass([window class]), [self recursiveSubviewsInView:window]);
     }
+    
+    // 遍历 UIWindow 下的所有包含点击点的 view
+    CGPoint tapPointInView = [tapGR locationInView:self.view];
+    CGPoint tapPointInWindow = [self.view convertPoint:tapPointInView toView:nil];
+    NSArray *subviewsContainPoint = [self recursiveSubviewsAtPoint:tapPointInWindow inView:[[UIApplication sharedApplication] keyWindow]];
+    NSLog(@"subviewsContainPoint = %@", subviewsContainPoint);
 }
 
-// 获得某 window 下所有的 subviews
+// 获取包含点击点所在的所有 window 和 view 的数组
+- (NSArray *)viewsAtPoint:(CGPoint)tapPointInWindow {
+    NSMutableArray *views = [NSMutableArray array];
+    NSArray *allWindows = [UIWindow allWindowsIncludingInternalWindows:YES onlyVisibleWindows:NO];
+    for (UIWindow *window in allWindows) {
+        if ([window isMemberOfClass:[NSClassFromString(@"FLEXWindow") class]] && [window pointInside:tapPointInWindow withEvent:nil]) {
+            [views addObject:window];
+            [views addObjectsFromArray:[self recursiveSubviewsAtPoint:tapPointInWindow inView:window]];
+        }
+    }
+    return views;
+}
+
+// 递归遍历某 window 下所有的 subviews
 - (NSArray *)recursiveSubviewsInView:(UIView *)view {
     NSMutableArray *subviewsInView = [NSMutableArray array];
     for (UIView *subview in view.subviews) {
@@ -91,4 +110,22 @@
     return subviewsInView;
 }
 
+// 递归遍历某 window 下"包含 pointInView 点的"所有的 subviews
+- (NSArray *)recursiveSubviewsAtPoint:(CGPoint)pointInView inView:(UIView *)view {
+    NSMutableArray *subviewsContainPoint = [NSMutableArray array];
+    for (UIView *subview in view.subviews) {
+        if (subview.hidden || subview.alpha < 0.01) continue;
+        
+        BOOL isSubviewContainsPoint = CGRectContainsPoint(subview.frame, pointInView);
+        if (isSubviewContainsPoint) {
+            [subviewsContainPoint addObject:subview];
+        }
+        // 对于 pointInView 落在超出父 view 的子 view 上的部分且可以显示出来（clipsToBounds == NO）的情况，也要将其遍历出来
+        if (isSubviewContainsPoint || !subview.clipsToBounds) {
+            CGPoint pointInSubview = [view convertPoint:pointInView toView:subview];
+            [subviewsContainPoint addObjectsFromArray:[self recursiveSubviewsAtPoint:pointInSubview inView:subview]];
+        }
+    }
+    return subviewsContainPoint;
+}
 @end
