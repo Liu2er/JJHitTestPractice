@@ -521,7 +521,6 @@ typedef NS_ENUM(NSUInteger, FLEXExplorerMode) {
 {
     
     [self removeAndClearOutlineViews];
-    NSLog(@"old.self.outlineViewsForVisibleViews = %@", self.outlineViewsForVisibleViews);
     
     // Include hidden views in the "viewsAtTapPoint" array so we can show them in the hierarchy list.
     self.viewsAtTapPoint = [self viewsAtPoint:selectionPointInWindow skipHiddenViews:NO];
@@ -537,7 +536,6 @@ typedef NS_ENUM(NSUInteger, FLEXExplorerMode) {
         [newOutlineViewsForVisibleViews setObject:outlineView forKey:key];
     }
     self.outlineViewsForVisibleViews = newOutlineViewsForVisibleViews;
-    NSLog(@"new.self.outlineViewsForVisibleViews = %@", self.outlineViewsForVisibleViews);
     self.selectedView = [self viewForSelectionAtPoint:selectionPointInWindow];
     
     // Make sure the explorer toolbar doesn't end up behind the newly added outline views.

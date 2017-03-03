@@ -85,6 +85,8 @@
 
 // 给相应点击最合适的 hitView 添加 outlineView
 - (void)addOutlineViewAtTapPoint:(CGPoint)tapPoint {
+    [self ergodicAllWindowsAndSubViewsInApplication]; // 调用此方法的目的是打印所有的 window 和 view
+
     // 遍历 UIWindow 下的所有包含点击点的 view
     NSArray *subviewsContainPoint = [self recursiveSubviewsAtPoint:tapPoint inView:(UIView *)[[UIApplication sharedApplication] keyWindow]];
     // 获得点击点最合适的 view
@@ -105,6 +107,7 @@
     for (UIWindow *window in allWindows) {
         [allWindowsAndSubViews addObject:window];
         [allWindowsAndSubViews addObjectsFromArray:[self recursiveSubviewsInView:window]];
+//        NSLog(@"%@ = %@", NSStringFromClass([window class]), [self recursiveSubviewsInView:window]);
     }
     return allWindowsAndSubViews;
 }

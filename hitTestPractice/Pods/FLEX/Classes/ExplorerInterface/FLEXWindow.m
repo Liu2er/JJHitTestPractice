@@ -50,6 +50,7 @@
     // The FLEX window is intended to be an overlay that generally doesn't affect the app underneath.
     // Most of the time, we want the app's main window(s) to be in control of status bar behavior.
     // Done at runtime with an obfuscated selector because it is private API. But you shoudn't ship this to the App Store anyways...
+    // _canAffectStatusBarAppearance
     NSString *canAffectSelectorString = [@[@"_can", @"Affect", @"Status", @"Bar", @"Appearance"] componentsJoinedByString:@""];
     SEL canAffectSelector = NSSelectorFromString(canAffectSelectorString);
     Method shouldAffectMethod = class_getInstanceMethod(self, @selector(shouldAffectStatusBarAppearance));
