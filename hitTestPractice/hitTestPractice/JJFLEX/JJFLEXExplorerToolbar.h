@@ -10,4 +10,10 @@
 
 @interface JJFLEXExplorerToolbar : UIView
 
+@property (copy, nonatomic) void (^dragButtonAction)(void);
+@property (copy, nonatomic) void (^selectButtonAction)(void);
+@property (copy, nonatomic) void (^closeButtonAction)(void);
+
++ (CGSize)toolBarSize;
+
 @end
