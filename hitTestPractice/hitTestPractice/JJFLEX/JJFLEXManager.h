@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JJFLEXWindow.h"
 
 @interface JJFLEXManager : NSObject
+@property (strong, nonatomic) JJFLEXWindow *explorerWindow;
+
++ (instancetype)sharedManager;
+- (void)showExplorer;
+- (void)hideExplorer;
 
 @end
