@@ -54,6 +54,4 @@
     [[JJFLEXManager sharedManager] showExplorer];
 }
 
-
-
 @end

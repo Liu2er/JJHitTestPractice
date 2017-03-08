@@ -38,7 +38,7 @@
     self.isSelectItemChosen = NO;
     self.outlineViewsForHitViews = [NSMutableDictionary dictionary];
     
-    self.explorerToolbar = [[JJFLEXExplorerToolbar alloc] initWithFrame:CGRectMake(100, 400, 0, 0)];
+    self.explorerToolbar = [[JJFLEXExplorerToolbar alloc] initWithFrame:CGRectMake(10, 310, 0, 0)];
     self.explorerToolbar.size = [JJFLEXExplorerToolbar toolBarSize];
     self.explorerToolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:self.explorerToolbar];
@@ -196,7 +196,7 @@
 - (void)handleToolbarPanGesture:(UIPanGestureRecognizer *)panGR {
     CGPoint tapPointInView = [panGR locationInView:self.view];
     CGPoint translation = [panGR translationInView:self.view];
-    NSLog(@"panGR = %@, tapPointInView = %@, translation = %@", panGR, NSStringFromCGPoint(tapPointInView), NSStringFromCGPoint(translation));
+//    NSLog(@"panGR = %@, tapPointInView = %@, translation = %@", panGR, NSStringFromCGPoint(tapPointInView), NSStringFromCGPoint(translation));
     
     switch (panGR.state) {
         case UIGestureRecognizerStateBegan:

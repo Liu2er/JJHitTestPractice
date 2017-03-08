@@ -7,91 +7,82 @@
 //
 
 #import "JJFLEXExplorerToolbar.h"
+#import "JJFLEXToolbarItem.h"
 #import "JJFLEXResources.h"
 #import "UIView+Layout.h"
 
-#import "JJFLEXToolbarItem.h"
-
-static const CGFloat itemMargin = 5.f;
-static const CGFloat itemPadding = 20.f;
+static const CGFloat toolBarHeight = 44.0;
+static const CGFloat toolBarItemWidth = 50.0;
+static const CGFloat toolBarDragHandleWidth = 30.0;
 
 @interface JJFLEXExplorerToolbar ()
 
-@property (strong, nonatomic) UIButton *dragItem;
-@property (strong, nonatomic) UIButton *selectItem;
-@property (strong, nonatomic) UIButton *closeItem;
-
-//@property (nonatomic, strong, readwrite) JJFLEXToolbarItem *selectItem;
-//@property (nonatomic, strong, readwrite) JJFLEXToolbarItem *moveItem;
-//@property (nonatomic, strong, readwrite) JJFLEXToolbarItem *globalsItem;
+@property (nonatomic, strong, readwrite) UIView *dragHandle;
+@property (nonatomic, strong) UIImageView *dragHandleImageView;
+@property (nonatomic, strong, readwrite) JJFLEXToolbarItem *selectItem;
+@property (nonatomic, strong, readwrite) JJFLEXToolbarItem *closeItem;
 
 @end
 
 @implementation JJFLEXExplorerToolbar
 
-
-//- (instancetype)initWithFrame:(CGRect)frame {
-//    self = [super initWithFrame:frame];
-//    if (self) {
-//        
-//    }
-//    return self;
-//}
-
-
-
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
         
-        //        self.backgroundColor = [UIColor magentaColor];
+        _dragHandle = ({
+            UIView *dragHandle = [[UIView alloc] initWithFrame:CGRectZero];
+            dragHandle.backgroundColor = [JJFLEXToolbarItem defaultBackgroundColor];
+            [self addSubview:dragHandle];
+            dragHandle;
+        });
         
-        _dragItem = ({
-            UIButton *dragItem = [[UIButton alloc] initWithFrame:CGRectZero];
-            [dragItem setImage:[JJFLEXResources dragIcon] forState:UIControlStateNormal];
-            [dragItem addTarget:self action:@selector(dragToolBar) forControlEvents:UIControlEventTouchUpInside];
-            [self addSubview:dragItem];
-            dragItem;
+        _dragHandleImageView = ({
+            UIImageView *dragHandleImageView = [[UIImageView alloc] initWithImage:[JJFLEXResources dragIcon]];
+            [_dragHandle addSubview:dragHandleImageView];
+            dragHandleImageView;
         });
         
         _selectItem = ({
-            UIButton *selectItem = [[UIButton alloc] initWithFrame:CGRectZero];
-            [selectItem setImage:[JJFLEXResources selectIcon] forState:UIControlStateNormal];
-            //            if (selectItem.highlighted) {
-            //                selectItem.backgroundColor = [[self class] highlightedBackgroundColor];
-            //            }
+            JJFLEXToolbarItem *selectItem = [JJFLEXToolbarItem toolbarItemWithTitle:@"Select" image:[JJFLEXResources selectIcon]];
             [selectItem addTarget:self action:@selector(selectToolBar) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:selectItem];
             selectItem;
         });
         
         _closeItem = ({
-            UIButton *closeItem = [[UIButton alloc] initWithFrame:CGRectZero];
-            [closeItem setImage:[JJFLEXResources closeIcon] forState:UIControlStateNormal];
+            JJFLEXToolbarItem *closeItem = [JJFLEXToolbarItem toolbarItemWithTitle:@"Close" image:[JJFLEXResources closeIcon]];
             [closeItem addTarget:self action:@selector(closeToolBar) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:closeItem];
             closeItem;
         });
         
         self.layer.borderColor = [UIColor redColor].CGColor;
-        self.layer.borderWidth = 2;
+        self.layer.borderWidth = 1;
     }
     return self;
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self.dragItem sizeToFit];
-    self.dragItem.left = itemMargin;
-    self.dragItem.top = 0;
     
-    [self.selectItem sizeToFit];
-    self.selectItem.left = self.dragItem.right + itemPadding;
-    self.selectItem.centerY = self.dragItem.centerY;
+    // 1、self.bounds.origin.x = 0;self.bounds.origin.y = 0;
+    // 先 size 后 point，否则会有问题
+    self.dragHandle.size = CGSizeMake(toolBarDragHandleWidth, toolBarHeight);
+    self.dragHandle.left = 0;
+    self.dragHandle.top = 0;
     
-    [self.closeItem sizeToFit];
-    self.closeItem.left = self.selectItem.right + itemPadding;
-    self.closeItem.centerY = self.dragItem.centerY;
+    self.dragHandleImageView.centerX = self.dragHandle.centerX;
+    self.dragHandleImageView.centerY = self.dragHandle.centerY;
+    
+    self.selectItem.size = CGSizeMake(toolBarItemWidth, toolBarHeight);
+    self.selectItem.left = self.dragHandle.right;
+    self.selectItem.centerY = self.dragHandle.centerY;
+    
+    self.closeItem.size = CGSizeMake(toolBarItemWidth, toolBarHeight);
+    self.closeItem.left = self.selectItem.right;
+    self.closeItem.centerY = self.dragHandle.centerY;
 }
 
 - (void)dragToolBar {
@@ -119,19 +110,17 @@ static const CGFloat itemPadding = 20.f;
 }
 
 + (CGSize)toolBarSize {
-    return CGSizeMake(itemMargin + [JJFLEXResources dragIcon].size.width + itemPadding + [JJFLEXResources selectIcon].size.width + itemPadding + [JJFLEXResources closeIcon].size.width + itemMargin, [JJFLEXResources dragIcon].size.height);
+    CGFloat toolBarWidth = toolBarDragHandleWidth + toolBarItemWidth * 2;
+    return CGSizeMake(toolBarWidth, toolBarHeight);
 }
 
-//- (void)updateBackgroundColor
-//{
-//    if (self.highlighted) {
-//        self.backgroundColor = [[self class] highlightedBackgroundColor];
-//    } else if (self.selected) {
-//        self.backgroundColor = [[self class] selectedBackgroundColor];
-//    } else {
-//        self.backgroundColor = [[self class] defaultBackgroundColor];
-//    }
-//}
++ (CGFloat)toolbarItemHeight {
+    return 44.0;
+}
+
++ (CGFloat)dragHandleWidth {
+    return 30.0;
+}
 
 + (UIColor *)highlightedBackgroundColor {
     return [UIColor colorWithWhite:0.9 alpha:1.0];

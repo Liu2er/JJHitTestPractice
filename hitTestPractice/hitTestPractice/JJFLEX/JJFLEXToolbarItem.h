@@ -10,4 +10,7 @@
 
 @interface JJFLEXToolbarItem : UIButton
 
++ (instancetype)toolbarItemWithTitle:(NSString *)title image:(UIImage *)image;
++ (UIColor *)defaultBackgroundColor;
+
 @end
