@@ -10,12 +10,13 @@
 
 @implementation JJFLEXWindow
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        self.windowLevel = UIWindowLevelStatusBar + 200;
+    }
+    return self;
 }
-*/
 
 @end
