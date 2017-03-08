@@ -11,6 +11,12 @@
 #import "UIView+Layout.h"
 #import "JJFLEXManager.h"
 
+@interface UIWindow (allWindows)
+
++ (NSArray *)allWindowsIncludingInternalWindows:(BOOL)includeInternalWindows onlyVisibleWindows:(BOOL)onlyVisibleWindows;
+
+@end
+
 @interface JJFLEXExplorerViewController ()
 
 @property (nonatomic, strong) JJFLEXExplorerToolbar *explorerToolbar;
@@ -79,6 +85,18 @@
         
     }
     
+}
+
+// 遍历整个 UIApplication 得到包含所有 window 和 subviews 的数组
+- (NSMutableArray *)ergodicAllWindowsAndSubViewsInApplication {
+    NSMutableArray *allWindowsAndSubViews = [NSMutableArray array];
+    NSArray *allWindows = [UIWindow allWindowsIncludingInternalWindows:YES onlyVisibleWindows:NO];
+    for (UIWindow *window in allWindows) {
+        [allWindowsAndSubViews addObject:window];
+        [allWindowsAndSubViews addObjectsFromArray:[self recursiveSubviewsInView:window]];
+        //        NSLog(@"%@ = %@", NSStringFromClass([window class]), [self recursiveSubviewsInView:window]);
+    }
+    return allWindowsAndSubViews;
 }
 
 // 给相应点击最合适的 hitView 添加 outlineView
