@@ -21,22 +21,22 @@ static const CGFloat itemPadding = 20.f;
 @property (strong, nonatomic) UIButton *selectItem;
 @property (strong, nonatomic) UIButton *closeItem;
 
-@property (nonatomic, strong, readwrite) FLEXToolbarItem *selectItem;
-@property (nonatomic, strong, readwrite) FLEXToolbarItem *moveItem;
-@property (nonatomic, strong, readwrite) FLEXToolbarItem *globalsItem;
+//@property (nonatomic, strong, readwrite) JJFLEXToolbarItem *selectItem;
+//@property (nonatomic, strong, readwrite) JJFLEXToolbarItem *moveItem;
+//@property (nonatomic, strong, readwrite) JJFLEXToolbarItem *globalsItem;
 
 @end
 
 @implementation JJFLEXExplorerToolbar
 
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        
-    }
-    return self;
-}
+//- (instancetype)initWithFrame:(CGRect)frame {
+//    self = [super initWithFrame:frame];
+//    if (self) {
+//        
+//    }
+//    return self;
+//}
 
 
 
@@ -68,7 +68,6 @@ static const CGFloat itemPadding = 20.f;
         _closeItem = ({
             UIButton *closeItem = [[UIButton alloc] initWithFrame:CGRectZero];
             [closeItem setImage:[JJFLEXResources closeIcon] forState:UIControlStateNormal];
-            closeItem setImageEdgeInsets:UIEdgeInsetsMake(<#CGFloat top#>, <#CGFloat left#>, <#CGFloat bottom#>, <#CGFloat right#>)
             [closeItem addTarget:self action:@selector(closeToolBar) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:closeItem];
             closeItem;
@@ -105,7 +104,6 @@ static const CGFloat itemPadding = 20.f;
 - (void)selectToolBar {
     NSLog(@"选择");
     if (_selectButtonAction) {
-        //        self.selectItem.highlighted
         if (self.selectItem.highlighted) {
             self.selectItem.backgroundColor = [[self class] highlightedBackgroundColor];
         }

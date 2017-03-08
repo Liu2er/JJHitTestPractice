@@ -36,55 +36,47 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isSelectItemChosen = NO;
+    self.outlineViewsForHitViews = [NSMutableDictionary dictionary];
     
     self.explorerToolbar = [[JJFLEXExplorerToolbar alloc] initWithFrame:CGRectMake(100, 400, 0, 0)];
     self.explorerToolbar.size = [JJFLEXExplorerToolbar toolBarSize];
     self.explorerToolbar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:self.explorerToolbar];
     
-    UIButton *buttont = [[UIButton alloc] initWithFrame:CGRectMake(50, 50, 50, 50)];
-    buttont.backgroundColor = [UIColor redColor];
-    [self.view addSubview:buttont];
-    
-    
     self.explorerToolbar.closeButtonAction = ^(){
         [JJFLEXManager sharedManager].explorerWindow.hidden = YES;
     };
     
     __weak typeof(self) weakSelf = self;
-    weakSelf.explorerToolbar.selectButtonAction = ^(){
+    weakSelf.explorerToolbar.selectButtonAction = ^() {
         weakSelf.isSelectItemChosen = !self.isSelectItemChosen;
         if (!weakSelf.isSelectItemChosen) {
-            // 移除之前添加的 outlineViews
+            // 取消选中 selectItem 时移除之前添加的 outlineViews
             [weakSelf removeOutlineViews];
         }
     };
     
-    self.outlineViewsForHitViews = [NSMutableDictionary dictionary];
-    
-    [self setupSelectionTapGestures];
+    [self setupSelectionItemTapGestures];
     [self setupToolbarPanGestures];
 }
 
-- (void)setupSelectionTapGestures {
+- (void)setupSelectionItemTapGestures {
     UITapGestureRecognizer *selectionTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSelectionTap:)];
     [self.view addGestureRecognizer:selectionTapGR];
 }
 
 // 监听屏幕点击事件
 - (void)handleSelectionTap:(UITapGestureRecognizer *)tapGR {
-    if (tapGR.state != UIGestureRecognizerStateRecognized) return;
-    // 移除之前添加的 outlineViews
-    [self removeOutlineViews];
+    if (tapGR.state != UIGestureRecognizerStateRecognized) return;    
     
     if (self.isSelectItemChosen) {
+        // 移除之前添加的 outlineViews
+        [self removeOutlineViews];
         // 添加新的 outlineViews
         CGPoint tapPointInView = [tapGR locationInView:self.view];
         CGPoint tapPointInWindow = [self.view convertPoint:tapPointInView toView:nil];
         [self addOutlineViewAtTapPoint:tapPointInWindow];
-        
     }
-    
 }
 
 // 遍历整个 UIApplication 得到包含所有 window 和 subviews 的数组
@@ -195,18 +187,17 @@
 
 #pragma mark - Toolbar Dragging
 
+// 给 Toolbar 添加拖拽手势
 - (void)setupToolbarPanGestures {
     UIPanGestureRecognizer *panGR = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleToolbarPanGesture:)];
     [self.explorerToolbar addGestureRecognizer:panGR];
 }
 
 - (void)handleToolbarPanGesture:(UIPanGestureRecognizer *)panGR {
-    
     CGPoint tapPointInView = [panGR locationInView:self.view];
     CGPoint translation = [panGR translationInView:self.view];
     NSLog(@"panGR = %@, tapPointInView = %@, translation = %@", panGR, NSStringFromCGPoint(tapPointInView), NSStringFromCGPoint(translation));
     
-    //    [self updateToolbarPostionWithDragGesture:panGR];
     switch (panGR.state) {
         case UIGestureRecognizerStateBegan:
             self.toolbarFrameBeforeDragging = self.explorerToolbar.frame;
@@ -223,22 +214,25 @@
     }
 }
 
+// 实时修改 Toolbar 的位置
 - (void)updateToolbarPostionWithDragGesture:(UIPanGestureRecognizer *)panGR {
     CGPoint translation = [panGR translationInView:self.view];
     CGRect newToolbarFrame = self.toolbarFrameBeforeDragging;
     newToolbarFrame.origin.x += translation.x;
     newToolbarFrame.origin.y += translation.y;
     
+    // 限制 ToolBar 的上下极限位置
     CGFloat maxY = CGRectGetMaxY(self.view.bounds) - newToolbarFrame.size.height;
-    if (newToolbarFrame.origin.y < 0.0) {
-        newToolbarFrame.origin.y = 0.0;
+    if (newToolbarFrame.origin.y < 20.0) {
+        newToolbarFrame.origin.y = 20.0;
     } else if (newToolbarFrame.origin.y > maxY) {
         newToolbarFrame.origin.y = maxY;
     }
     
+    // 限制 ToolBar 的左右极限位置
     CGFloat maxX = CGRectGetMaxX(self.view.bounds) - newToolbarFrame.size.width;
-    if (newToolbarFrame.origin.x < 0) {
-        newToolbarFrame.origin.x = 0;
+    if (newToolbarFrame.origin.x < 0.0) {
+        newToolbarFrame.origin.x = 0.0;
     } else if (newToolbarFrame.origin.x > maxX) {
         newToolbarFrame.origin.x = maxX;
     }
