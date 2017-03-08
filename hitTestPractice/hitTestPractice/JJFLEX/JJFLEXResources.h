@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface JJFLEXResources : NSObject
+
++ (UIImage *)dragIcon;
++ (UIImage *)selectIcon;
++ (UIImage *)closeIcon;
 
 @end
