@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2DB5289F5516FFA6E0A452D7 /* libPods-hitTestPractice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18F70A074D70C43AD034B1E0 /* libPods-hitTestPractice.a */; };
+		588B91191E6FE481005796B9 /* JJFLEXManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 588B91181E6FE481005796B9 /* JJFLEXManager.m */; };
+		588B911C1E6FE4B5005796B9 /* JJFLEXWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 588B911B1E6FE4B5005796B9 /* JJFLEXWindow.m */; };
+		588B91221E6FE4F6005796B9 /* JJFLEXExplorerToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 588B91211E6FE4F6005796B9 /* JJFLEXExplorerToolbar.m */; };
+		588B91251E6FE530005796B9 /* JJFLEXExplorerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 588B91241E6FE530005796B9 /* JJFLEXExplorerViewController.m */; };
+		588B91281E6FE55F005796B9 /* JJFLEXToolbarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 588B91271E6FE55F005796B9 /* JJFLEXToolbarItem.m */; };
+		588B912B1E6FE591005796B9 /* JJFLEXResources.m in Sources */ = {isa = PBXBuildFile; fileRef = 588B912A1E6FE591005796B9 /* JJFLEXResources.m */; };
 		58F14CC41E66C9FD0084265E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F14CC31E66C9FD0084265E /* main.m */; };
 		58F14CC71E66C9FD0084265E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F14CC61E66C9FD0084265E /* AppDelegate.m */; };
 		58F14CCA1E66C9FD0084265E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F14CC91E66C9FD0084265E /* ViewController.m */; };
@@ -49,6 +55,18 @@
 		18F70A074D70C43AD034B1E0 /* libPods-hitTestPractice.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-hitTestPractice.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33324D4A05CCF4FB8C65A52F /* Pods-hitTestPracticeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hitTestPracticeUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-hitTestPracticeUITests/Pods-hitTestPracticeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4BC72E648FA872CB15A9CDE9 /* libPods-hitTestPracticeTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-hitTestPracticeTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		588B91171E6FE481005796B9 /* JJFLEXManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJFLEXManager.h; sourceTree = "<group>"; };
+		588B91181E6FE481005796B9 /* JJFLEXManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJFLEXManager.m; sourceTree = "<group>"; };
+		588B911A1E6FE4B5005796B9 /* JJFLEXWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJFLEXWindow.h; sourceTree = "<group>"; };
+		588B911B1E6FE4B5005796B9 /* JJFLEXWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJFLEXWindow.m; sourceTree = "<group>"; };
+		588B91201E6FE4F6005796B9 /* JJFLEXExplorerToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJFLEXExplorerToolbar.h; sourceTree = "<group>"; };
+		588B91211E6FE4F6005796B9 /* JJFLEXExplorerToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJFLEXExplorerToolbar.m; sourceTree = "<group>"; };
+		588B91231E6FE530005796B9 /* JJFLEXExplorerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJFLEXExplorerViewController.h; sourceTree = "<group>"; };
+		588B91241E6FE530005796B9 /* JJFLEXExplorerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJFLEXExplorerViewController.m; sourceTree = "<group>"; };
+		588B91261E6FE55F005796B9 /* JJFLEXToolbarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJFLEXToolbarItem.h; sourceTree = "<group>"; };
+		588B91271E6FE55F005796B9 /* JJFLEXToolbarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJFLEXToolbarItem.m; sourceTree = "<group>"; };
+		588B91291E6FE591005796B9 /* JJFLEXResources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJFLEXResources.h; sourceTree = "<group>"; };
+		588B912A1E6FE591005796B9 /* JJFLEXResources.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJFLEXResources.m; sourceTree = "<group>"; };
 		58F14CBF1E66C9FD0084265E /* hitTestPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hitTestPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58F14CC31E66C9FD0084265E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		58F14CC51E66C9FD0084265E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -124,6 +142,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		588B91161E6FE440005796B9 /* JJFLEX */ = {
+			isa = PBXGroup;
+			children = (
+				588B91171E6FE481005796B9 /* JJFLEXManager.h */,
+				588B91181E6FE481005796B9 /* JJFLEXManager.m */,
+				588B911A1E6FE4B5005796B9 /* JJFLEXWindow.h */,
+				588B911B1E6FE4B5005796B9 /* JJFLEXWindow.m */,
+				588B91231E6FE530005796B9 /* JJFLEXExplorerViewController.h */,
+				588B91241E6FE530005796B9 /* JJFLEXExplorerViewController.m */,
+				588B91201E6FE4F6005796B9 /* JJFLEXExplorerToolbar.h */,
+				588B91211E6FE4F6005796B9 /* JJFLEXExplorerToolbar.m */,
+				588B91261E6FE55F005796B9 /* JJFLEXToolbarItem.h */,
+				588B91271E6FE55F005796B9 /* JJFLEXToolbarItem.m */,
+				588B91291E6FE591005796B9 /* JJFLEXResources.h */,
+				588B912A1E6FE591005796B9 /* JJFLEXResources.m */,
+			);
+			path = JJFLEX;
+			sourceTree = "<group>";
+		};
 		58F14CB61E66C9FC0084265E = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +186,7 @@
 		58F14CC11E66C9FD0084265E /* hitTestPractice */ = {
 			isa = PBXGroup;
 			children = (
+				588B91161E6FE440005796B9 /* JJFLEX */,
 				58F14CC51E66C9FD0084265E /* AppDelegate.h */,
 				58F14CC61E66C9FD0084265E /* AppDelegate.m */,
 				58F14CC81E66C9FD0084265E /* ViewController.h */,
@@ -506,16 +544,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				588B911C1E6FE4B5005796B9 /* JJFLEXWindow.m in Sources */,
+				588B91191E6FE481005796B9 /* JJFLEXManager.m in Sources */,
 				58F14D041E66CA7A0084265E /* View2-1-1.m in Sources */,
 				58F14D031E66CA7A0084265E /* View1.m in Sources */,
 				58F14D021E66CA7A0084265E /* View1-2.m in Sources */,
 				58F14D061E66CA7A0084265E /* View2.m in Sources */,
 				58F14CCA1E66C9FD0084265E /* ViewController.m in Sources */,
 				58F14CC71E66C9FD0084265E /* AppDelegate.m in Sources */,
+				588B91221E6FE4F6005796B9 /* JJFLEXExplorerToolbar.m in Sources */,
 				58F14D011E66CA7A0084265E /* View1-1.m in Sources */,
+				588B912B1E6FE591005796B9 /* JJFLEXResources.m in Sources */,
+				588B91251E6FE530005796B9 /* JJFLEXExplorerViewController.m in Sources */,
 				58F14CC41E66C9FD0084265E /* main.m in Sources */,
 				58F14D0A1E66CAD60084265E /* UIView+Layout.m in Sources */,
 				58F14D051E66CA7A0084265E /* View2-1.m in Sources */,
+				588B91281E6FE55F005796B9 /* JJFLEXToolbarItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,6 +801,7 @@
 				58F14CEE1E66C9FD0084265E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		58F14CEF1E66C9FD0084265E /* Build configuration list for PBXNativeTarget "hitTestPracticeTests" */ = {
 			isa = XCConfigurationList;
@@ -765,6 +810,7 @@
 				58F14CF11E66C9FD0084265E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		58F14CF21E66C9FD0084265E /* Build configuration list for PBXNativeTarget "hitTestPracticeUITests" */ = {
 			isa = XCConfigurationList;
@@ -773,6 +819,7 @@
 				58F14CF41E66C9FD0084265E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
