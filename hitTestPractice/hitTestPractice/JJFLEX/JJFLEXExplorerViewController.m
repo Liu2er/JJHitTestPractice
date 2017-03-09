@@ -20,13 +20,10 @@
 @interface JJFLEXExplorerViewController ()
 
 @property (nonatomic, strong) JJFLEXExplorerToolbar *explorerToolbar;
-
 /// Only valid while a toolbar drag pan gesture is in progress.
 @property (nonatomic, assign) CGRect toolbarFrameBeforeDragging;
-
 // 用于存放 HitView 和 HitView 的 outlineView，其中 key 是 HitView，value 是 outlineView
 @property (nonatomic, strong) NSMutableDictionary *outlineViewsForHitViews;
-
 @property (nonatomic, assign) BOOL isSelectItemChosen;
 
 @end
@@ -60,6 +57,14 @@
     [self setupToolbarPanGestures];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    // 当屏幕加载完毕后调用此方法打印所有的 window 和 view，在 viewDidLoad 和 viewWillAppear 的最后调用此方法打印的都是不完整的
+    [self ergodicAllWindowsAndSubViewsInApplication];
+}
+
+#pragma mark - Recursive Subviews
+
 - (void)setupSelectionItemTapGestures {
     UITapGestureRecognizer *selectionTapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSelectionTap:)];
     [self.view addGestureRecognizer:selectionTapGR];
@@ -68,6 +73,8 @@
 // 监听屏幕点击事件
 - (void)handleSelectionTap:(UITapGestureRecognizer *)tapGR {
     if (tapGR.state != UIGestureRecognizerStateRecognized) return;    
+    
+    [self ergodicAllWindowsAndSubViewsInApplication]; // 调用此方法的目的是打印所有的 window 和 view
     
     if (self.isSelectItemChosen) {
         // 移除之前添加的 outlineViews
@@ -86,15 +93,13 @@
     for (UIWindow *window in allWindows) {
         [allWindowsAndSubViews addObject:window];
         [allWindowsAndSubViews addObjectsFromArray:[self recursiveSubviewsInView:window]];
-        //        NSLog(@"%@ = %@", NSStringFromClass([window class]), [self recursiveSubviewsInView:window]);
+        NSLog(@"%@(windowLevel:%@) = %@", NSStringFromClass([window class]), @(window.windowLevel), [self recursiveSubviewsInView:window]);
     }
     return allWindowsAndSubViews;
 }
 
 // 给相应点击最合适的 hitView 添加 outlineView
 - (void)addOutlineViewAtTapPoint:(CGPoint)tapPoint {
-    //    [self ergodicAllWindowsAndSubViewsInApplication]; // 调用此方法的目的是打印所有的 window 和 view
-    
     // 遍历 UIWindow 下的所有包含点击点的 view
     NSArray *subviewsContainPoint = [self recursiveSubviewsAtPoint:tapPoint inView:(UIView *)[[UIApplication sharedApplication] keyWindow]];
     // 获得点击点最合适的 view
@@ -194,8 +199,8 @@
 }
 
 - (void)handleToolbarPanGesture:(UIPanGestureRecognizer *)panGR {
-    CGPoint tapPointInView = [panGR locationInView:self.view];
-    CGPoint translation = [panGR translationInView:self.view];
+//    CGPoint tapPointInView = [panGR locationInView:self.view];
+//    CGPoint translation = [panGR translationInView:self.view];
 //    NSLog(@"panGR = %@, tapPointInView = %@, translation = %@", panGR, NSStringFromCGPoint(tapPointInView), NSStringFromCGPoint(translation));
     
     switch (panGR.state) {
