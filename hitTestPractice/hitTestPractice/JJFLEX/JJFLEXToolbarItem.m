@@ -95,8 +95,7 @@
 
 #pragma mark - UIButton Layout Overrides
 
-- (CGRect)titleRectForContentRect:(CGRect)contentRect
-{
+- (CGRect)titleRectForContentRect:(CGRect)contentRect {
     // Bottom aligned and centered.
     CGRect titleRect = CGRectZero;
     CGSize titleSize = [self.attributedTitle boundingRectWithSize:contentRect.size options:0 context:nil].size;
@@ -107,8 +106,7 @@
     return titleRect;
 }
 
-- (CGRect)imageRectForContentRect:(CGRect)contentRect
-{
+- (CGRect)imageRectForContentRect:(CGRect)contentRect {
     CGSize imageSize = self.image.size;
     CGRect titleRect = [self titleRectForContentRect:contentRect];
     CGFloat availableHeight = contentRect.size.height - titleRect.size.height - [[self class] topMargin];

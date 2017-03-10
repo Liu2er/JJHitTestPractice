@@ -58,8 +58,8 @@ static const CGFloat toolBarDragHandleWidth = 30.0;
             closeItem;
         });
         
-        self.layer.borderColor = [UIColor redColor].CGColor;
-        self.layer.borderWidth = 1;
+        self.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        self.layer.borderWidth = 0.5;
     }
     return self;
 }
